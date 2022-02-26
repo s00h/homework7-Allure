@@ -12,8 +12,9 @@ public class App6Test extends AbstractTest {
     @DisplayName("Email подписка")
     @Tag("pozitive")
     void inMail() {
-        new App6(getDriver()).goDown();
-        new App6(getDriver()).emailSubmit("mail@mail.ru");
+        new App6(getDriver()).goDown(); //спускаемся вниз страницы
+        new App6(getDriver())
+                .emailSubmit("mail@mail.ru"); // находим поле для ввода e-mail, вводим почту и нажимаем submit
         Assertions.assertTrue(getDriver()
                 .findElement(By.xpath((".//span[@class=\"sm-text sm-message__text sm-text-text-12 sm-text-regular sm-message__text--type--base\"]")))
                 .getText().contains("вы успешно подписались")); // проверяем что появился текст "вы успешно подписались"

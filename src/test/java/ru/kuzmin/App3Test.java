@@ -19,9 +19,9 @@ public class App3Test extends AbstractTest {
 
 //        Thread.sleep(5000); //ждем 5сек
 
-        new App3(getDriver()).goToSneak();
-        Assertions.assertTrue(getDriver().getTitle().contains("кроссовки"));
-        new App3(getDriver()).checkPuma();
+        new App3(getDriver()).goToSneak(); //идем в раздел "мужские кроссовки"
+        Assertions.assertTrue(getDriver().getTitle().contains("кроссовки")); //проверяем что title содержит "кроссовки"
+        new App3(getDriver()).checkPuma(); //выбираем фильтр по бренду "PUMA"
         Assertions.assertTrue(getDriver()
                 .findElement(By.xpath(".//span[@data-selenium=\"filter-title\"]"))
                 .getText().contains("PUMA")); // проверяем что элемент содержит в себе текст "PUMA"

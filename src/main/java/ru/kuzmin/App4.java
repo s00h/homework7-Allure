@@ -14,17 +14,17 @@ public class App4 extends AbstractPage {
     @FindBy(xpath = ".//span[@class=\"sm-text sm-select__option-text sm-text-text-14 sm-text-regular\"][contains(.,'Новинки')]")
     private WebElement bynew;
 
-    public App4 goToBoot(){
+    public App4 goToBoot() {
         this.boot.click();
         return this;
     }
 
-    public App4 goToList(){
+    public App4 goToList() {
         this.list.click();
         return this;
     }
 
-    public App4 selectNew(){
+    public App4 selectNew() {
         this.bynew.click();
         return this;
     }

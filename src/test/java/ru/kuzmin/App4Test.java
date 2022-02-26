@@ -21,11 +21,11 @@ public class App4Test extends AbstractTest {
 
         Thread.sleep(5000); //ждем 5сек
 
-        new App4(getDriver()).goToBoot();
+        new App4(getDriver()).goToBoot(); //идем в раздел "Женские ботинки"
         Assertions.assertTrue(getDriver()
-                .getTitle().contains("Женские ботинки"));
-        new App4(getDriver()).goToList();
-        new App4(getDriver()).selectNew();
+                .getTitle().contains("Женские ботинки")); //проверяем что title содержит "Женские ботинки"
+        new App4(getDriver()).goToList(); //раскрываем фильтр
+        new App4(getDriver()).selectNew(); //упорядочеваем по новинкам
 
         WebDriverWait wait = new WebDriverWait(getDriver(), 10);
         wait.until(ExpectedConditions // явное ожидание

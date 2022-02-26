@@ -26,7 +26,7 @@ public class App2 extends AbstractPage {
         super(driver);
     }
 
-    public void searchIn(String search){
+    public void searchIn(String search) {
         Actions searchIn = new Actions(getDriver());
         searchIn
                 .sendKeys(this.search, search)

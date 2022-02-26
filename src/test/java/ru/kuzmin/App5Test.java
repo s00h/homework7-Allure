@@ -9,22 +9,22 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class App5Test extends AbstractTest{
+public class App5Test extends AbstractTest {
 
     @Test
     @DisplayName("Тоггл экспресс-достака")
-    @Tag ("pozitive")
-    void toCompare () throws InterruptedException {
+    @Tag("pozitive")
+    void toCompare() throws InterruptedException {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
         long windowWidth = (long) jsExecutor.executeScript("return window.innerWidth");
         jsExecutor.executeScript("window.scrollBy(0,1000)"); //скроллим вниз
 
         Thread.sleep(5000); //ждем 5сек
 
-        new App5 (getDriver()).goToBoot();
+        new App5(getDriver()).goToBoot(); //идем в раздел "Мужские ботинки"
         Assertions.assertTrue(getDriver()
-                .getTitle().contains("Мужские ботинки"));
-        new App5(getDriver()).clickToExp();
+                .getTitle().contains("Мужские ботинки")); //проверяем что title сдержит "Мужские ботинки"
+        new App5(getDriver()).clickToExp(); //выбираем фильтр "Экспресс-доставка"
 
         WebDriverWait wait = new WebDriverWait(getDriver(), 10);
         wait.until(ExpectedConditions // явное ожидание
@@ -34,7 +34,6 @@ public class App5Test extends AbstractTest{
                 .findElement(By.xpath(".//span[@data-selenium=\"filter-title\"]"))
                 .getText().contains("Экспресс")); // проверяем что появился текст "Экспресс"
     }
-
 
 
 }
