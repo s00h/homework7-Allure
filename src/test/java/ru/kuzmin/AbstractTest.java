@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.concurrent.TimeUnit;
 
 public abstract class AbstractTest {
-    private static WebDriver driver;
+    static WebDriver webDriver;
 
     @BeforeAll
     public static void init() {
@@ -18,13 +18,13 @@ public abstract class AbstractTest {
         options.addArguments("--incognito");
         options.addArguments("start-maximized");
         options.addArguments("disable-popup-blocking");
-        driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        webDriver = new ChromeDriver(options);
+        webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
     @BeforeEach
     void goTo() {
-        Assertions.assertDoesNotThrow(() -> driver.navigate().to("https://new.sportmaster.ru"),
+        Assertions.assertDoesNotThrow(() -> webDriver.navigate().to("https://new.sportmaster.ru"),
                 "Страница не доступна");
     }
 
@@ -34,7 +34,7 @@ public abstract class AbstractTest {
 //    }
 
     public static WebDriver getDriver() {
-        return driver;
+        return webDriver;
     }
 
 }

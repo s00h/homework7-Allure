@@ -17,17 +17,14 @@ public class App3Test extends AbstractTest {
         long windowWidth = (long) jsExecutor.executeScript("return window.innerWidth");
         jsExecutor.executeScript("window.scrollBy(0,1100)"); //скроллим вниз
 
-        Thread.sleep(5000); //ждем 5сек
+//        Thread.sleep(5000); //ждем 5сек
 
-        getDriver()
-                .findElement(By.xpath(".//a[@class=\"bnt-color_b\"][@href=\"/catalog/muzhskaya_obuv/krossovki/\"]"))
-                .click(); // Переходим в раздел "Мужские кроссовки"
-        getDriver()
-                .findElement(By.xpath(".//span[@class=\"sm-facet-value__caption\"][contains(.,'PUMA')]"))
-                .click(); // Выбираем "PUMA"
-
+        new App3(getDriver()).goToSneak();
+        Assertions.assertTrue(getDriver().getTitle().contains("кроссовки"));
+        new App3(getDriver()).checkPuma();
         Assertions.assertTrue(getDriver()
                 .findElement(By.xpath(".//span[@data-selenium=\"filter-title\"]"))
                 .getText().contains("PUMA")); // проверяем что элемент содержит в себе текст "PUMA"
+
     }
 }

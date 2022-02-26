@@ -21,15 +21,11 @@ public class App4Test extends AbstractTest {
 
         Thread.sleep(5000); //ждем 5сек
 
-        getDriver()
-                .findElement(By.xpath(".//a[@class=\"bnt-color_b\"][@href=\"/catalog/zhenskaya_obuv/botinki/\"]"))
-                .click(); // Переходим в раздел "Женские ботинки"
-        getDriver()
-                .findElement(By.xpath(".//div[@class=\"sm-text sm-select__text sm-text-text-14 sm-text-regular\"]"))
-                .click(); // Раскрываем список
-        getDriver()
-                .findElement(By.xpath(".//span[@class=\"sm-text sm-select__option-text sm-text-text-14 sm-text-regular\"][contains(.,'Новинки')]"))
-                .click(); // Выбираем "Новинки"
+        new App4(getDriver()).goToBoot();
+        Assertions.assertTrue(getDriver()
+                .getTitle().contains("Женские ботинки"));
+        new App4(getDriver()).goToList();
+        new App4(getDriver()).selectNew();
 
         WebDriverWait wait = new WebDriverWait(getDriver(), 10);
         wait.until(ExpectedConditions // явное ожидание
@@ -38,7 +34,6 @@ public class App4Test extends AbstractTest {
         Assertions.assertTrue(getDriver()
                 .getCurrentUrl().contains("FIRST"));
         // проверяем что URL содержит в себе текст "NEWEST_FIRST"
-
 
     }
 

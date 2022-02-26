@@ -21,12 +21,10 @@ public class App5Test extends AbstractTest{
 
         Thread.sleep(5000); //ждем 5сек
 
-        getDriver()
-                .findElement(By.xpath(".//a[@class=\"bnt-color_b\"][@href=\"/catalog/muzhskaya_obuv/botinki/\"]"))
-                .click(); // переходим в раздел "Мужские ботинки"
-        getDriver()
-                .findElement(By.xpath("//*[@id=\"app\"]/div[2]/div[2]/div[1]/div/div[2]/div/div/div/label/input"))
-                .click(); // кликаем на тоггл "Экспресс доставка"
+        new App5 (getDriver()).goToBoot();
+        Assertions.assertTrue(getDriver()
+                .getTitle().contains("Мужские ботинки"));
+        new App5(getDriver()).clickToExp();
 
         WebDriverWait wait = new WebDriverWait(getDriver(), 10);
         wait.until(ExpectedConditions // явное ожидание

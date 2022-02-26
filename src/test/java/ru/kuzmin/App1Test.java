@@ -12,31 +12,18 @@ public class App1Test extends AbstractTest {
     @DisplayName("Добавление товара в корзину")
     @Tag("pozitive")
     void testCart() {
-       getDriver()
-               .findElement(By.xpath(".//a[@class=\"bnt-color_b\"][@href=\"/catalog/muzhskaya_odezhda/kurtki/\"]"))
-               .click(); // Переходим в раздел "Мужские куртки"
-       getDriver()
-               .findElement(By.xpath(".//a[@href=\"/product/22648220299/\"]"))
-               .click(); // Выбираем товар
-       getDriver()
-               .findElement(By.xpath(".//div[@data-selenium=\"product-sizes-item\"]"))
-               .click(); // Выбираем любоый свободный размер
-       getDriver()
-               .findElement(By.xpath(".//button[@data-selenium=\"addToCartButton\"]"))
-               .click(); //Кладем в корзину
 
-// С экшенами не заработало
-//        Actions inCart = new Actions(getDriver());
-//        inCart
-//                .click(getDriver().findElement(By.xpath(".//a[@class=\"bnt-color_b\"][@href=\"/catalog/muzhskaya_odezhda/kurtki/\"]")))
-//                .click(getDriver().findElement(By.xpath(".//a[@href=\"/product/22648220299/\"]")))
-//                .click(getDriver().findElement(By.xpath(".//div[@data-selenium=\"product-sizes-item\"]")))
-//                .click(getDriver().findElement(By.xpath(".//button[@data-selenium=\"addToCartButton\"]")))
-//                .build()
-//                .perform();
+        new App1(getDriver()).goToChap();
+        Assertions.assertTrue(getDriver().getTitle().contains("куртки"));
+        new App1(getDriver()).goToProduct();
+        Assertions.assertTrue(getDriver().getTitle().contains("мужская"));
+        new App1(getDriver()).getSize();
+        Assertions.assertTrue(getDriver().getCurrentUrl().contains("178638570299"));
+        new App1(getDriver()).addToCart();
 
         Assertions.assertTrue(getDriver()
                 .findElement(By.xpath(".//button[@data-selenium=\"goToCartButton\"]"))
                 .getText().contains("В")); // проверяем что элемент содержит в себе текст "В"
+
     }
 }
