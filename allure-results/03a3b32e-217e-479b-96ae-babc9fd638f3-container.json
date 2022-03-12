@@ -1,0 +1,1 @@
+{"uuid":"03a3b32e-217e-479b-96ae-babc9fd638f3","name":"Фильтр по бренду","children":["11eaad31-a38d-4c34-83ab-4dca50f4b882"],"befores":[{"name":"goTo","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1647113043385,"stop":1647113060127}],"afters":[],"start":1647113043369,"stop":1647113085459}
