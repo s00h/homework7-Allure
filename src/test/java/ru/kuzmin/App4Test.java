@@ -1,5 +1,9 @@
 package ru.kuzmin;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -13,7 +17,10 @@ public class App4Test extends AbstractTest {
 
     @Test
     @DisplayName("Сортировка новинок")
-    @Tag("pozitive")
+    @Description("Тест сортировки товаров по новинкам")
+    @Owner("Кузьмин Е.В.")
+    @Severity(SeverityLevel.MINOR)
+    @Tag("new")
     void testSort() throws InterruptedException {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
         long windowWidth = (long) jsExecutor.executeScript("return window.innerWidth");
@@ -21,9 +28,10 @@ public class App4Test extends AbstractTest {
 
         Thread.sleep(5000); //ждем 5сек
 
-        new App4(getDriver()).goToBoot(); //идем в раздел "Женские ботинки"
+        new App1(getDriver()).goToCookie(); // принимаем куки
+        new App4(getDriver()).goToBoot(); //идем в раздел "Женские кроссовки"
         Assertions.assertTrue(getDriver()
-                .getTitle().contains("Женские ботинки")); //проверяем что title содержит "Женские ботинки"
+                .getTitle().contains("Женские кроссовки")); //проверяем что title содержит "Женские кроссовки"
         new App4(getDriver()).goToList(); //раскрываем фильтр
         new App4(getDriver()).selectNew(); //упорядочеваем по новинкам
 

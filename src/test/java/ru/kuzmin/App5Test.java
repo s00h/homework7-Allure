@@ -1,5 +1,9 @@
 package ru.kuzmin;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -12,8 +16,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class App5Test extends AbstractTest {
 
     @Test
-    @DisplayName("Тоггл экспресс-достака")
-    @Tag("pozitive")
+    @DisplayName("Экспресс-достака")
+    @Description("Тест тоггла *экспресс доставка* в блоке фильтров")
+    @Owner("Кузьмин Е.В.")
+    @Severity(SeverityLevel.MINOR)
+    @Tag("filter")
     void toCompare() throws InterruptedException {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
         long windowWidth = (long) jsExecutor.executeScript("return window.innerWidth");
@@ -21,9 +28,10 @@ public class App5Test extends AbstractTest {
 
         Thread.sleep(5000); //ждем 5сек
 
-        new App5(getDriver()).goToBoot(); //идем в раздел "Мужские ботинки"
+        new App1(getDriver()).goToCookie(); // принимаем куки
+        new App5(getDriver()).goToBoot(); //идем в раздел "Мужские кроссовки"
         Assertions.assertTrue(getDriver()
-                .getTitle().contains("Мужские ботинки")); //проверяем что title сдержит "Мужские ботинки"
+                .getTitle().contains("Мужские кроссовки")); //проверяем что title сдержит "Мужские кроссовки"
         new App5(getDriver()).clickToExp(); //выбираем фильтр "Экспресс-доставка"
 
         WebDriverWait wait = new WebDriverWait(getDriver(), 10);

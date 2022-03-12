@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class App5 extends AbstractPage {
 
-    @FindBy(xpath = ".//a[@class=\"bnt-color_b\"][@href=\"/catalog/muzhskaya_obuv/botinki/\"]")
+    @FindBy(xpath = ".//a[@class=\"bnt-color_b\"][@href=\"/catalog/muzhskaya_obuv/krossovki/\"]")
     private WebElement boot;
 
     @FindBy(xpath = "//*[@id=\"app\"]/div[2]/div[2]/div[1]/div/div[2]/div/div/div/label/input")

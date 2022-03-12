@@ -18,8 +18,24 @@ public class App1 extends AbstractPage {
     @FindBy(xpath = ".//button[@data-selenium=\"addToCartButton\"]")
     private WebElement cart;
 
+    @FindBy(xpath = ".//button[@class=\"sm-cookie-agreement__button root initial-blue s\"]")
+    private WebElement cookie;
+
+    @FindBy(xpath = ".//i[@id=\"icon-close-button-1646393459031\"]")
+    private WebElement ad;
+
     public App1(WebDriver driver) {
         super(driver);
+    }
+
+    public App1 goToCookie(){
+        this.cookie.click();
+        return this;
+    }
+
+    public App1 closeAd(){
+        this.ad.click();
+        return this;
     }
 
     public App1 goToChap() {

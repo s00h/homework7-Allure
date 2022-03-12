@@ -17,6 +17,7 @@ public abstract class AbstractTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--incognito");
         options.addArguments("start-maximized");
+        options.addArguments("test-type");
         options.addArguments("disable-popup-blocking");
         webDriver = new ChromeDriver(options);
         webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -24,7 +25,7 @@ public abstract class AbstractTest {
 
     @BeforeEach
     void goTo() {
-        Assertions.assertDoesNotThrow(() -> webDriver.navigate().to("https://new.sportmaster.ru"),
+        Assertions.assertDoesNotThrow(() -> webDriver.navigate().to("https://sportmaster.ru"),
                 "Страница не доступна");
     }
 

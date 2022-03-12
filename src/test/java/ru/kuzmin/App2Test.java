@@ -1,5 +1,9 @@
 package ru.kuzmin;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -9,8 +13,11 @@ import org.openqa.selenium.By;
 public class App2Test extends AbstractTest {
 
     @Test
-    @DisplayName("Поиск на сайте")
-    @Tag("pozitive")
+    @DisplayName("Поиск")
+    @Description("Тест поиска на сайте по ключевому слову")
+    @Owner("Кузьмин Е.В.")
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag("search")
     void searchIn() {
         new App2(getDriver()).searchIn("ботинки");
         //через экшн находим поле для поиска и вбиваем "ботинки"

@@ -16,6 +16,14 @@ public class App6 extends AbstractPage {
     @FindBy(xpath = ".//button[@data-selenium=\"submit\"]")
     private WebElement submit;
 
+    @FindBy(xpath = ".//input[@type=\"email\"]")
+    private WebElement subscribe;
+
+    public App6 goSubscribe() {
+        this.subscribe.click();
+        return this;
+    }
+
     public App6 goDown() {
         this.body.sendKeys(Keys.CONTROL, Keys.END);
         return this;
